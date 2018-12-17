@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   usable_structs.h                                   :+:      :+:    :+:   */
+/*   screen_to_viewport.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/15 17:05:07 by ikoloshy          #+#    #+#             */
-/*   Updated: 2018/12/17 18:23:28 by ikoloshy         ###   ########.fr       */
+/*   Created: 2018/12/16 21:25:31 by ikoloshy          #+#    #+#             */
+/*   Updated: 2018/12/16 21:31:35 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef USABLE_STRUCTS_H
-# define USABLE_STRUCTS_H
-# define UC unsigned char
+#include "../includes/usable_structs.h"
 
-typedef union	u_color
+t_vector	screen_to_viewport(int x, int y)
 {
-	int 		color;
-	UC			clr[3];
-}				t_color;
+	t_vector	*temp;
 
-typedef struct	s_vector
-{
-	double		x;
-	double		y;
-	double		z;
-}				t_vector;
-
-typedef struct	s_image_specification
-{
-	int 		bpp;
-	int 		sl;
-	int 		endl;
-}				t_is;
-#endif
+	temp = (t_vector)malloc
+}
