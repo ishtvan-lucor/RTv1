@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 17:51:27 by ikoloshy          #+#    #+#             */
-/*   Updated: 2018/12/17 18:22:07 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2018/12/26 17:10:05 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ typedef struct	s_basic
 	void		*p_to_img;
 	int 		*img;
 	t_is		spec;
+	t_vector	cmr;
+
 }				t_basic;
 
-void			loop_and_catch_exits(t_basic *storage);
+void			start_loop_mlx(t_basic *storage);
 int				init_mlx(t_basic *s);
 int				validation_config(char *config);
 t_vector		point_from_screen_to_viewport(int x, int y);

@@ -6,35 +6,13 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 17:43:41 by ikoloshy          #+#    #+#             */
-/*   Updated: 2018/12/17 18:44:32 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2018/12/26 17:07:25 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/RTv1.h"
 
-int		catch_esc(int key, t_basic *storage)
-{
-	if (key == 53)
-	{
-		storage = NULL;
-		exit(1);
-	}
-	return (0);
-}
-
-int		exit_x(t_basic *s) {
-	s = NULL;
-	exit(1);
-}
-
-void	loop_and_catch_exits(t_basic *storage)
-{
-	mlx_hook(storage->win, 2, 5, catch_esc, storage);
-	mlx_hook(storage->win, 17, 1L << 17, exit_x, storage);
-	mlx_loop(storage->mlx);
-}
-
-void	create_default_image(t_basic *store)
+static void	create_default_image(t_basic *store)
 {
 	t_is	im_spec;
 
@@ -45,7 +23,7 @@ void	create_default_image(t_basic *store)
 	ft_bzero(store->img, (WIN_W * WIN_H * 4));
 }
 
-int		init_mlx(t_basic *s)
+int			init_mlx(t_basic *s)
 {
 	if (!(s->mlx = mlx_init()))
 	{
