@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikoloshy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:27:31 by ikoloshy          #+#    #+#             */
-/*   Updated: 2018/07/01 20:52:54 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2018/12/27 21:18:29 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ typedef struct		s_tail
 	char			tail[BUFF_SIZE];
 }					t_tail;
 
+typedef struct	s_vector
+{
+	double		x;
+	double		y;
+	double		z;
+}				t_vector;
+
 void				ft_bzero(void *s, size_t n);
 void				ft_free_after_split(char **str, size_t len);
 void				ft_lstadd(t_list **alst, t_list *new);
@@ -45,8 +52,9 @@ void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr(int n);
 void				ft_putnbr_fd(int n, int fd);
-void				ft_putstr(char const *s);
+int					ft_putstr(char const *s);
 void				ft_putstr_fd(const char *s, int fd);
+void				ft_set_vector(t_vector *v, double x, double y, double z);
 void				ft_strclr(char *s);
 void				ft_strdel(char **as);
 void				ft_striter(char *s, void (*f)(char *));
@@ -99,5 +107,6 @@ size_t				ft_strlen(const char *s);
 size_t				ft_wordssplit(char const *s, char c);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+double				ft_string_to_double(const char *str);
 
 #endif

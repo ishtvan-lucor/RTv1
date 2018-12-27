@@ -6,7 +6,7 @@
 #    By: ikoloshy <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/24 17:36:13 by ikoloshy          #+#    #+#              #
-#    Updated: 2018/07/31 15:36:22 by ikoloshy         ###   ########.fr        #
+#    Updated: 2018/12/27 21:40:07 by ikoloshy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC = ft_putchar.c ft_putstr.c ft_bzero.c ft_memalloc.c ft_memdel.c ft_strnew.c 
 	  ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putnbr.c ft_striter.c \
 	  ft_striteri.c ft_strmap.c ft_strmapi.c ft_lstnew.c ft_lstdelone.c \
 	  ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_lstswap.c ft_realloc.c \
-	  get_next_line.c ft_iscolor_rgb.c ft_atoi_base.c ft_free_after_split.c
+	  get_next_line.c ft_iscolor_rgb.c ft_atoi_base.c ft_free_after_split.c \
+	  ft_string_to_double.c ft_set_vector.c
 OFL = $(SRC:.c=.o)
 HDR = libft.h
 FLG = -Wall -Wextra -Werror
