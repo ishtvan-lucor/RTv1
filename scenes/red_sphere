@@ -1,4 +1,4 @@
-camera  0 0 0
+camera 0 0 0
 sphere
     color 0xff0000
     radius 1

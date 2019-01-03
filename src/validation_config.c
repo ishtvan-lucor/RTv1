@@ -6,15 +6,23 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 19:58:34 by ikoloshy          #+#    #+#             */
-/*   Updated: 2018/12/13 21:16:44 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/01/03 21:21:34 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "../includes/RTv1.h"
 
-int	validation_config(char *config)
+int			validation_config(char *config, t_basic *sv)
 {
-	if (ft_strcmp(config, "yes"))
-		return (1);
+	int		fd;
+
+	if ((fd = open(config, O_RDONLY)) == -1)
+		return (ft_putstr("ERROR: fail read!\n"));
+	if (val_camera(fd, &sv->cmr))
+		return (ft_putstr("ERROR: incorrect camera data! MAN_CONF\n"));
+	if (close(fd) == -1)
+		return (ft_putstr("ERROR: fail close!\n"));
 	return (0);
 }
+
+//todo MAN_CONF

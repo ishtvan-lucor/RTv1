@@ -16,7 +16,7 @@ static void	preperation_and_start(char *config)
 {
 	t_basic sv;
 
-	if (validation_config(config))
+	if (validation_config(config, &sv))
 		return ;
 	if (init_mlx(&sv))
 		return ;
@@ -31,6 +31,7 @@ int			main(int argc, char **argv)
 		preperation_and_start(argv[1]);
 	else
 		ft_putstr("ERROR: too mach arguments! Usage: ./RTv1 config_file");
+	
 	return (0);
 }
 

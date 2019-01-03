@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 17:05:07 by ikoloshy          #+#    #+#             */
-/*   Updated: 2018/12/17 18:23:28 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2018/12/27 17:07:19 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,11 @@ typedef union	u_color
 	UC			clr[3];
 }				t_color;
 
-typedef struct	s_vector
-{
-	double		x;
-	double		y;
-	double		z;
-}				t_vector;
-
 typedef struct	s_image_specification
 {
 	int 		bpp;
 	int 		sl;
 	int 		endl;
 }				t_is;
+
 #endif
