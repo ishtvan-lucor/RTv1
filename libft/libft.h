@@ -86,6 +86,7 @@ char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 int					ft_atoi(const char *str);
 int					ft_atoi_base(const char *str, int base);
+int					ft_isdouble_or_int(const char *str);
 int					ft_isalpha(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
