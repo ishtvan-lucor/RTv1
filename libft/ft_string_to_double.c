@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 20:44:15 by ikoloshy          #+#    #+#             */
-/*   Updated: 2018/12/27 21:40:43 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/01/03 16:48:55 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static double	get_fractional_part(const char *str)
 	while (*str != '\0')
 		str++;
 	str--;
-	while (*str >= 0 && *str <= 9)
+	while (*str >= '0' && *str <= '9')
 	{
 		fp = fp * 0.1 + (*str - '0');
 		str--;
@@ -46,6 +46,7 @@ double		ft_string_to_double(const char *str)
 		res = res * 10 + (*str - '0');
 		str++;
 	}
-	res += get_fractional_part(str);
+	if (*str == '.')
+		res += get_fractional_part(str);
 	return (res * flag);
 }
