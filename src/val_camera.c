@@ -25,7 +25,7 @@ static int	get_points(const char *line, t_vector *cmr)
 		ft_free_after_split(s, len);
 		return (ft_putstr("ERROR: useless information is present 0_0\n"));
 	}
-	if (ft_strcmp(s[0], "camera"))
+	if (ft_strcmp(s[0], CMR))
 	{
 		ft_free_after_split(s, len);
 		return (ft_putstr("ERROR: first line should be camera's position)\n"));
