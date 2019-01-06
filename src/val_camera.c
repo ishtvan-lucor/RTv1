@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 20:22:32 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/01/05 17:26:12 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/01/06 17:41:52 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ int			val_camera(int fd, t_vector *cmr)
 		return (ft_putstr("ERROR: problem with reading config file!\n"));
 	}
 	res = get_points(line, cmr);
+	free(line);
+	get_next_line(fd, &line);
+	if (*line != '\n')
+		res = ft_putstr("ERROR: Wrong syntax! MAN_CONF\n");
 	free(line);
 	return (res);
 }
