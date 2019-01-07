@@ -26,16 +26,17 @@ typedef enum	e_obj
 
 typedef struct	s_spot
 {
-	float		intensity;
+	double		intensity;
 	t_vector	position;
 }				t_spot;
 
 typedef struct	s_sphere
 {
-	char		obj;
 	t_color		clr;
-	double		r;
-	t_vector	c;
+	int			spcl;
+	double		rds;
+	double		rfl;
+	t_vector	cntr;
 }				t_sphere;
 
 #endif

@@ -6,23 +6,24 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 19:58:34 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/01/05 21:33:25 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/01/07 20:34:30 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/RTv1.h"
 
-// TODO write logic for create/add list with obj(check obj before adding to list OR NO!)
-
-static int	check_light(int fd, int obj, t_list *light)
+static int	check_light(int fd, int obj, t_list **light)
 {
-
+	if (obj == SPOT)
+		return (val_spot(fd, light));
+	return (0);
 }
 
-static int	check_prim(int fd, int obj, t_list *prim)
+static int	check_prim(int fd, int obj, t_list **prim)
 {
-
-
+	if (obj == SPHERE)
+		return (val_sphere(fd, prim));
+	return (0);
 }
 
 //TODO add new primitives and lights
@@ -37,7 +38,7 @@ static int	define_obj(char *line)
 		return (-1);
 }
 
-static int	find_objects(int fd, t_list *light, t_list *prim)
+static int	find_objects(int fd, t_list **light, t_list **prim)
 {
 	char	*line;
 	int		obj;
@@ -67,7 +68,7 @@ int			validation_config(char *config, t_basic *sv)
 		return (ft_putstr("ERROR: fail read!\n"));
 	if (val_camera(fd, &sv->cmr))
 		return (ft_putstr("ERROR: incorrect camera data! MAN_CONF\n"));
-	if (find_objects(fd, sv->light, sv->prim))
+	if (find_objects(fd, &sv->light, &sv->prim))
 		return (1);
 	if (close(fd) == -1)
 		return (ft_putstr("ERROR: fail close!\n"));
