@@ -6,22 +6,22 @@
 #    By: ikoloshy <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/11 15:27:53 by azaporoz          #+#    #+#              #
-#    Updated: 2018/11/28 16:42:06 by ikoloshy         ###   ########.fr        #
+#    Updated: 2019/01/04 18:35:57 by ikoloshy         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME = fractol
+NAME = RTv1
 FLG = -Wall -Wextra -Werror
 FRM = -framework AppKit -framework OpenGL
 SRC = src/main.c \
-	  src/init_start.c \
-	  src/set_data.c \
-	  src/make_fract.c \
-	  src/fractals.c \
-	  src/zoom.c \
-	  src/move_julia.c \
+	  src/validation_config.c \
+	  src/point_from_screen_to_viewport.c \
+	  src/init_mlx.c \
+	  src/start_loop_mlx.c \
+	  src/vector_writer.c \
+	  src/val_camera.c \
 
-HDR = includes/fractol.h
+HDR = includes/RTv1.h
 OFL = $(SRC:.c=.o)
 LIB = libft/libft.a
 MLX = -lmlx -I minilibx_macos -L minilibx_macos
@@ -34,7 +34,7 @@ all: $(NAME)
 
 $(NAME): $(LIB) $(OFL) 
 	@gcc $(FLG) -o $@ $(OFL) -I $(HDR) -L libft/ -lft $(MLX) $(FRM)
-	@echo "\033[1;32mFractol is ready to work\033[0m"
+	@echo "\033[1;32mRTv1 is ready to work\033[0m"
 
 %.o: %.c $(HDR) $(LIB)
 	@gcc -c $< -o $@ $(FLG) 
@@ -44,10 +44,10 @@ $(LIB):
 clean:
 	@/bin/rm -f $(OFL)
 	@make fclean -C ./libft
-	@echo "\033[1;32mObjects files Fractol were deleted\033[0m"
+	@echo "\033[1;32mObjects files RTv1 were deleted\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@echo "\033[1;32mFractol was deleted\033[0m"
+	@echo "\033[1;32mRTv1 was deleted\033[0m"
 
 re: fclean all
