@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 19:58:34 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/01/07 20:34:30 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/01/13 15:38:10 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,5 @@ int			validation_config(char *config, t_basic *sv)
 	return (0);
 }
 
+// TODO if rewrite parsing read about ini file
 //todo MAN_CONF

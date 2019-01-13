@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/16 21:25:31 by ikoloshy          #+#    #+#             */
-/*   Updated: 2018/12/17 17:03:47 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/01/10 18:25:16 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,5 @@ t_vector	point_from_screen_to_viewport(int x, int y)
 	temp.z = FOV;
 	return (temp);
 }
+
+//TODO have idea that i'm to complicated this

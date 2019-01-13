@@ -6,14 +6,17 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 17:02:04 by ikoloshy          #+#    #+#             */
-/*   Updated: 2018/12/26 17:48:38 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/01/10 21:04:32 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECTS_H
 # define OBJECTS_H
+
 # include "usable_structs.h"
-# include "../libft/libft.h"
+
+# define REFLECTIVE 0
+# define SPECULAR 10
 
 typedef enum	e_obj
 {

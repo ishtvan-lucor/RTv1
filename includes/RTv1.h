@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 17:51:27 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/01/07 19:50:12 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/01/10 21:05:33 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 
 # define WIN_W 900
 # define WIN_H 900
-# define REFLECTIVE 0
-# define SPECULAR 10
+# define INFINITY_RAY_DIST 1000000000.0
+# define START_OF_VIEWPORT 1.0
+# define BACKGROUND 0x000000
+# define DEPTH 1
 /*
  * FOV - (field of view) angle of view from camera
  * to make it 60 degree: Vw = Vh = d = 1
@@ -45,6 +47,7 @@ void	show_obj_coord(t_basic *all);
 
 
 void			start_loop_mlx(t_basic *storage);
+void			render(t_basic **s);
 int				init_mlx(t_basic *s);
 int				vector_writer(char *c1, char *c2, char *c3, t_vector *t);
 t_vector		point_from_screen_to_viewport(int x, int y);

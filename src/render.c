@@ -6,16 +6,22 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 21:22:10 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/01/08 21:23:36 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/01/10 21:09:34 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/RTv1.h"
 
-void	render(t_basic *s)
+static int	get_color(t_vector d, t_vector cmr, t_list *obj, t_list *l)
 {
-	int	x;
-	int	y;
+
+}
+
+void		render(t_basic *s)
+{
+	int			x;
+	int			y;
+	t_vector		d;
 
 	x = 0;
 	y = 0;
@@ -23,7 +29,8 @@ void	render(t_basic *s)
 	{
 		while(x < WIN_H)
 		{
-			s->img[x + y * WIN_W] =
+			d = point_from_screen_to_viewport(x, y);
+			s->img[x + y * WIN_W] = get_color(d, s->cmr, s->prim, s->light);
 			x++;
 		}
 		y++;

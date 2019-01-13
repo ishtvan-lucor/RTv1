@@ -6,12 +6,15 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 17:05:07 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/01/07 17:50:32 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/01/10 21:04:32 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef USABLE_STRUCTS_H
 # define USABLE_STRUCTS_H
+
+# include "../libft/libft.h"
+
 # define UC unsigned char
 # define CMR "camera"
 # define CNTR "center"
@@ -36,4 +39,11 @@ typedef struct	s_image_specification
 	int 		endl;
 }				t_is;
 
+typedef struct	s_conditions_data
+{
+	double		min;
+	double		max;
+	t_vector	o;
+	t_vector	d;
+}				t_c_d;
 #endif
