@@ -23,7 +23,8 @@ SRC = ft_putchar.c ft_putstr.c ft_bzero.c ft_memalloc.c ft_memdel.c ft_strnew.c 
 	  ft_striteri.c ft_strmap.c ft_strmapi.c ft_lstnew.c ft_lstdelone.c \
 	  ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_lstswap.c ft_realloc.c \
 	  get_next_line.c ft_iscolor_rgb.c ft_atoi_base.c ft_free_after_split.c \
-	  ft_string_to_double.c ft_set_vector.c ft_isdouble_or_int.c
+	  ft_string_to_double.c ft_set_vector.c ft_isdouble_or_int.c v_len.c v_dot.c \
+	  v_prd.c v_nrm.c
 OFL = $(SRC:.c=.o)
 HDR = libft.h
 FLG = -Wall -Wextra -Werror

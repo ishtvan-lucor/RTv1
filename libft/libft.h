@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:27:31 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/01/10 21:25:39 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/01/13 18:03:49 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,9 @@ size_t				ft_wordssplit(char const *s, char c);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 double				ft_string_to_double(const char *str);
-double			ft_len_vector(const t_vector vec);
-double			ft_dot_vector(const t_vector vec);
+double				v_prd(t_vector v1, t_vector v2);
+double				v_len(t_vector vec);
+double				v_dot(t_vector vec);
+double				v_nrm(t_vector v);
 
 #endif
