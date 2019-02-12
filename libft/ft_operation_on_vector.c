@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 21:19:31 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/10 17:04:49 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/12 19:37:28 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ double		v_len(const t_vector *vec)
 	return (sqrt(vec->x * vec->x + vec->y * vec->y + vec->z * vec->z));
 }
 
-t_vector	*v_nrm(const t_vector *v)
+t_vector	v_nrm(const t_vector *v)
 {
 	double		len;
-	t_vector	*nrm;
+	t_vector	nrm;
 
 	len = v_len(v);
-	nrm = (t_vector*)malloc(sizeof(t_vector));
-	*nrm = v_div_n(v, len);
+	nrm = v_div_n(v, len);
 	return (nrm);
 }

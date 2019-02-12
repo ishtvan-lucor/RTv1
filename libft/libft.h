@@ -112,7 +112,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 double				ft_string_to_double(const char *str);
 double				v_dot_prd(const t_vector *v1, const t_vector *v2);
 double				v_len(const t_vector *vec);
-t_vector			*v_nrm(const t_vector *v);
+t_vector			v_nrm(const t_vector *v);
 t_vector			v_plus(const t_vector *v1, const t_vector *v2);
 t_vector			v_minus(const t_vector *v1, const t_vector *v2);
 t_vector			v_mult(const t_vector *v1, const t_vector *v2);
