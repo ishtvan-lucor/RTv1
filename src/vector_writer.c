@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/RTv1.h"
+#include "rtv1.h"
 
 int	vector_writer(char *c1, char *c2, char *c3, t_vector *t)
 {

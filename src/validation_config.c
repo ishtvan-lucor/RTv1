@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/RTv1.h"
+#include "rtv1.h"
 
 static int	check_light(int fd, int obj, t_list **light)
 {

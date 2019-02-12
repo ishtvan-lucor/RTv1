@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/RTv1.h"
+#include "rtv1.h"
 
 static void	create_default_image(t_basic *store)
 {

@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 17:05:07 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/01/10 21:04:32 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/12 20:16:01 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,21 @@ typedef struct	s_image_specification
 	int 		endl;
 }				t_is;
 
-typedef struct	s_conditions_data
+typedef struct	s_data_tr
 {
 	double		min;
 	double		max;
 	t_vector	o;
 	t_vector	d;
-}				t_c_d;
+}				t_data_tr;
+
+typedef struct	s_closset_object
+{
+	void		*obj;
+	int			type;
+	int			color;
+	double		t;
+	t_vector	hit;
+	t_vector	nrm;
+}				t_co;
 #endif

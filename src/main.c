@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/RTv1.h"
+#include "rtv1.h"
 
 static void	preperation_and_start(char *config)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/RTv1.h"
+#include "rtv1.h"
 
 static int	find_data(char *line, t_spot *spot)
 {

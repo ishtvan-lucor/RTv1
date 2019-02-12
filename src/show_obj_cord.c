@@ -1,4 +1,4 @@
-#include "../includes/RTv1.h"
+#include "rtv1.h"
 #include <stdio.h>
 
 void	show_obj_coord(t_basic *all)

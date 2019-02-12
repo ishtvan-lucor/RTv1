@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 17:02:04 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/01/10 21:04:32 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/12 22:09:20 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,5 @@ typedef struct	s_sphere
 }				t_sphere;
 
 #endif
+
+//TODO rewrite objects struct to be useable

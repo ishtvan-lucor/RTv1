@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RTv1.h                                             :+:      :+:    :+:   */
+/*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 17:51:27 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/01/10 21:05:33 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/12 17:05:07 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@
 # define WIN_H 900
 # define INFINITY_RAY_DIST 1000000000.0
 # define START_OF_VIEWPORT 1.0
-# define BACKGROUND 0x000000
+# define BACKGROUND_COLOR 0x000000
 # define DEPTH 1
+
 /*
- * FOV - (field of view) angle of view from camera
- * to make it 60 degree: Vw = Vh = d = 1
- */
+** FOV - (field of view) angle of view from camera
+** to make it 60 degree: Vw = Vh = d = 1
+*/
 # define FOV 1
 
 typedef struct	s_basic
@@ -35,26 +36,25 @@ typedef struct	s_basic
 	void		*mlx;
 	void		*win;
 	void		*p_to_img;
-	int 		*img;
+	int			*img;
 	t_is		spec; // never used)
 	t_vector	cmr;
 	t_list		*prim;
 	t_list		*light;
 }				t_basic;
 
-
+// delete bellow function
 void	show_obj_coord(t_basic *all);
-
 
 void			start_loop_mlx(t_basic *storage);
 void			render(t_basic **s);
 int				init_mlx(t_basic *s);
 int				vector_writer(char *c1, char *c2, char *c3, t_vector *t);
-t_vector		point_from_screen_to_viewport(int x, int y);
+int				trace_ray(t_data_tr *d, const t_list *obj, const t_list *light, int depth);
 
 /*
- * Validation
- */
+** Validation
+*/
 
 int				validation_config(char *config, t_basic *sv);
 int				val_camera(int fd, t_vector *cmr);
