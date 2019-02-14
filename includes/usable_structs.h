@@ -52,6 +52,8 @@ typedef struct	s_closset_object
 	void		*obj;
 	int			type;
 	int			color;
+	int			spcl;
+	double		rfl;
 	double		t;
 	t_vector	hit;
 	t_vector	nrm;

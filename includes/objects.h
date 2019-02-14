@@ -27,6 +27,18 @@ typedef enum	e_obj
 	CYLINDER
 }				t_obj;
 
+typedef struct	s_abstract_prim
+{
+	t_color		clr;
+	int			spcl;
+	double		rfl;
+}				t_aprm;
+
+typedef struct	s_abstract_light
+{
+	double		intensity;
+}				t_alght;
+
 typedef struct	s_spot
 {
 	double		intensity;
@@ -37,11 +49,10 @@ typedef struct	s_sphere
 {
 	t_color		clr;
 	int			spcl;
-	double		rds;
 	double		rfl;
+	double		rds;
 	t_vector	cntr;
 }				t_sphere;
 
 #endif
 
-//TODO rewrite objects struct to be useable
