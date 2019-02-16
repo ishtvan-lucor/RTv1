@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 17:51:27 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/16 18:13:34 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/16 21:07:13 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define WIN_H 900
 # define INFINITY_RAY_DIST 1000000000.0
 # define START_OF_VIEWPORT 1.0
+# define START_NEAR_SURFACE 0.001
 # define BACKGROUND_COLOR 0x000000
 # define DEPTH 1
 
@@ -51,6 +52,7 @@ void			render(t_basic **s);
 int				init_mlx(t_basic *s);
 int				vector_writer(char *c1, char *c2, char *c3, t_vector *t);
 int				trace_ray(t_data_tr *d, const t_list *obj, const t_list *light, int depth);
+double			culc_intensity(const t_co *point_data, const t_list *light);
 t_vector		reflection_ray(const t_vector *drct, const t_vector *nrm);
 
 /*
