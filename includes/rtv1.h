@@ -51,6 +51,7 @@ void			render(t_basic **s);
 int				init_mlx(t_basic *s);
 int				vector_writer(char *c1, char *c2, char *c3, t_vector *t);
 int				trace_ray(t_data_tr *d, const t_list *obj, const t_list *light, int depth);
+t_vector		reflection_ray(t_vector drct, t_vector nrm);
 
 /*
 ** Validation
