@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 17:51:27 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/12 17:05:07 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/16 18:13:34 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			render(t_basic **s);
 int				init_mlx(t_basic *s);
 int				vector_writer(char *c1, char *c2, char *c3, t_vector *t);
 int				trace_ray(t_data_tr *d, const t_list *obj, const t_list *light, int depth);
-t_vector		reflection_ray(t_vector drct, t_vector nrm);
+t_vector		reflection_ray(const t_vector *drct, const t_vector *nrm);
 
 /*
 ** Validation
