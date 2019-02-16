@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 17:05:07 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/16 19:49:01 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/16 21:31:13 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct	s_closet_object
 {
 	void		*obj;
 	int			color;
-	int			type;
 	int			spcl;
 	double		rfl;
 	double		t;
