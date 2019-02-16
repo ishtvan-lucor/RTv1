@@ -37,8 +37,8 @@ void				render(t_basic *s)
 		{
 			dtr.min = START_OF_VIEWPORT;
 			dtr.max = INFINITY_RAY_DIST;
-			dtr.d = point_from_screen_to_viewport(x, y);
-			dtr.o = s->cmr;
+			dtr.direction = point_from_screen_to_viewport(x, y);
+			dtr.start = s->cmr;
 			s->img[x + y * WIN_W] = trace_ray(&dtr, s->prim, s->light, DEPTH);
 			x++;
 		}
