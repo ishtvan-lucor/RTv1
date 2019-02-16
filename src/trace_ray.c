@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trace_ray.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 16:37:37 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/12 21:16:31 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/16 21:08:24 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,25 @@ static int	culc_clr(int cur_col, double comp)
 	return	(res.color);
 }
 
-static void	calculete_data_cl_obj(t_co *clst_obj, t_vector *d, t_vector *o)
+static void	calc_data_cl_obj(t_co *clst_obj, t_vector *d, t_vector *o, const t_list *light)
 {
 	t_vector	temp;
 	double		col_modif;
 
 	temp = v_mult_n(d, clst_obj->t);
 	clst_obj->hit =v_plus(o, &temp);
-	//TODO normalize vector
+
+	//TODO normalize for all universal
+	clst_obj->nrm = ((t_sphere*)(clst_obj->obj))->cntr;
+	clst_obj->nrm = v_minus(&clst_obj->hit, &clst_obj->nrm);
+	clst_obj->nrm = v_nrm(&clst_obj->nrm);
+
 	clst_obj->color = ((t_aprm*)(clst_obj->obj))->clr.color;
 	clst_obj->spcl = ((t_aprm*)(clst_obj->obj))->spcl;
 	clst_obj->rfl = ((t_aprm*)(clst_obj->obj))->rfl;
-	temp = v_mult_n(d, -1);
+	clst_obj->rvrs_drct = v_mult_n(d, -1);
 	//TODO write culc_light
-	col_modif = culc_light(clst_obj->hit, clst_obj->nrm, temp, clst_obj->spcl);
+	col_modif = culc_intensity(clst_obj, light);
 	clst_obj->color = culc_clr(clst_obj->color, col_modif);
 }
 
@@ -47,21 +52,22 @@ int			trace_ray(t_data_tr *d, const t_list *obj, const t_list *light, int depth)
 
 	clst_obj.obj = NULL;
 	//TODO write get_closet_obj
-	get_closest_object(&clst_obj, d);
+	get_closest_object(&clst_obj, d, obj);
 	if (clst_obj.obj == NULL)
 		return (BACKGROUND_COLOR);
-	calculete_data_cl_obj(&clst_obj, &d->direction, &d->start);
+	calc_data_cl_obj(&clst_obj, &d->direction, &d->start, light);
 	if (depth == 0 || clst_obj.rfl <= 0.0)
 		return clst_obj.color;
-	//TODO ReflectedRay function global
+	// reflective!!!
 	d->start = clst_obj.hit;
-	d->direction = reflection_ray(v_mult_n(&d->direction, -1), clst_obj.nrm);
-	d->min = 0.001;
+	d->direction = reflection_ray(&clst_obj.rvrs_drct, &clst_obj.nrm);
+	d->min = START_NEAR_SURFACE;
+	d->max = INFINITY_RAY_DIST;
 	ref_clr = trace_ray(d, obj, light, (depth - 1));
 	clst_obj.color = culc_clr(clst_obj.color, (1 - clst_obj.rfl));
 	ref_clr = culc_clr(ref_clr, clst_obj.rfl);
 	return (clst_obj.color + ref_clr);
 }
 
-
+//TODO optimization: use ones data struct t_data_tr
 
