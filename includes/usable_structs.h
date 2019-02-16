@@ -26,6 +26,13 @@
 # define PSTN "position"
 # define DELIMITR "+"
 
+typedef enum	e_rgb
+{
+	RED,
+	GREEN,
+	BLUE
+}				t_rgb;
+
 typedef union	u_color
 {
 	int 		color;
@@ -43,15 +50,15 @@ typedef struct	s_data_tr
 {
 	double		min;
 	double		max;
-	t_vector	o;
-	t_vector	d;
+	t_vector	start;
+	t_vector	direction;
 }				t_data_tr;
 
 typedef struct	s_closset_object
 {
 	void		*obj;
-	int			type;
 	int			color;
+	int			type;
 	int			spcl;
 	double		rfl;
 	double		t;
