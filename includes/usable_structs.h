@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   usable_structs.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 17:05:07 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/12 20:16:01 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/16 19:49:01 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct	s_data_tr
 	t_vector	direction;
 }				t_data_tr;
 
-typedef struct	s_closset_object
+typedef struct	s_closet_object
 {
 	void		*obj;
 	int			color;
@@ -64,5 +64,6 @@ typedef struct	s_closset_object
 	double		t;
 	t_vector	hit;
 	t_vector	nrm;
+	t_vector	rvrs_drct;
 }				t_co;
 #endif
