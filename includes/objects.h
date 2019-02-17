@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 17:02:04 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/16 20:11:12 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/17 14:08:18 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
 
 typedef enum	e_obj
 {
-	AMBIENT,
-	SPOT,
-	DLS,
-	SPHERE = 10,
+	SPHERE,
 	PLANE,
 	CONE,
-	CYLINDER
+	CYLINDER,
+	SPOT,
+	DLS,
+	AMBIENT
 }				t_obj;
 
 typedef struct	s_abstract_prim
