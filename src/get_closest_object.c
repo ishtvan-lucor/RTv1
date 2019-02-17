@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 12:11:41 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/17 14:32:00 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/17 14:34:24 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	check_t(double cur_t, double min, double max, double *closest)
 	return (0);
 }
 
-void		get_closest_object(t_co *obj, t_data_tr *data, t_list *entity)
+void		get_closest_object(t_co *obj, t_data_tr *data, const t_list *entity)
 {
 	t_hs	hits;
 
