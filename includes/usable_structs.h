@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 17:05:07 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/16 21:31:13 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/17 15:00:10 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,12 @@ typedef struct	s_hit_surface
 	double		t1;
 	double		t2;
 }				t_hs;
+
+typedef struct	s_values
+{
+	double		a;
+	double		b;
+	double		c;
+}				t_values;
 
 #endif
