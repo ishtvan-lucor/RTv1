@@ -44,7 +44,6 @@ static double	culc_effects(const t_co *point, t_data_tr *d, void *light)
 	t_co	test;
 
 	res = 0.0;
-	test.obj = NULL;
 	get_closest_object(&test, d, light);
 	if (test.obj)
 		return (res);

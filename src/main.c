@@ -23,6 +23,7 @@ static void	preperation_and_start(char *config)
 	show_obj_coord(&sv);
 	if (init_mlx(&sv))
 		return ;
+	render(&sv);
 	start_loop_mlx(&sv);
 }
 
