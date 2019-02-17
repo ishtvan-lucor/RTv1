@@ -16,7 +16,7 @@ int	val_color(char **s, t_color *trg, size_t len)
 {
 	if (len != 2)
 		return (ft_putstr("ERROR:{clr} invalid amount of data!\n"));
-	if (!ft_iscolor_rgb(s[1]))
+	if (ft_iscolor_rgb(s[1]))
 		return (ft_putstr("ERROR: invalid color!\n"));
 	trg->color = ft_atoi_base((s[1] + 2), 16);
 	return (0);

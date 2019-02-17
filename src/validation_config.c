@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation_config.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 19:58:34 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/01/13 15:38:10 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/17 15:48:04 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	find_objects(int fd, t_list **light, t_list **prim)
 		obj = define_obj(line);
 		if (obj == -1)
 			error = ft_putstr("ERROR: invalid object name! MAN_CONF");
-		else if (obj < 10)
+		else if (obj > CYLINDER)
 			error = check_light(fd, obj, light);
 		else
 			error = check_prim(fd, obj, prim);
