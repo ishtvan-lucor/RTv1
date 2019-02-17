@@ -65,4 +65,11 @@ typedef struct	s_closet_object
 	t_vector	nrm;
 	t_vector	rvrs_drct;
 }				t_co;
+
+typedef struct	s_hit_surface
+{
+	double		t1;
+	double		t2;
+}				t_hs;
+
 #endif
