@@ -37,14 +37,14 @@ static double	shine(const t_co *data, t_vector *drct, double bright)
 	return (shine);
 }
 
-static double	culc_effects(const t_co *point, t_data_tr *d, void *light)
+static double	culc_effects(const t_co *point, t_data_tr *d, void *light, const t_list *prim)
 {
 	double	res;
 	double	bright;
 	t_co	test;
 
 	res = 0.0;
-	get_closest_object(&test, d, light);
+	get_closest_object(&test, d, prim);
 	if (test.obj)
 		return (res);
 	bright = ((t_alght*)(light))->intensity;
@@ -56,7 +56,7 @@ static double	culc_effects(const t_co *point, t_data_tr *d, void *light)
 
 //TODO optimization: use the same struct s_closet_object
 
-double			culc_intensity(const t_co *point, const t_list *light)
+double			culc_intensity(const t_co *point, const t_list *light, const t_list *prim)
 {
 	double		intensity;
 	t_data_tr	d;
@@ -82,7 +82,7 @@ double			culc_intensity(const t_co *point, const t_list *light)
 			d.direction = ((t_dls*)(light->content))->direction;
 			d.max = INFINITY_RAY_DIST;
 		}
-		intensity += culc_effects(point, &d, light->content);
+		intensity += culc_effects(point, &d, light->content, prim);
 		light = light->next;
 	}
 	if (intensity > 1.0)

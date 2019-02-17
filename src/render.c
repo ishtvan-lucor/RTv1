@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 21:22:10 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/12 17:09:15 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/17 21:19:01 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,10 @@ void				render(t_basic *s)
 	int			y;
 	t_data_tr	dtr;
 
-	x = 0;
 	y = 0;
-
 	while (y < WIN_H)
 	{
+		x = 0;
 		while (x < WIN_H)
 		{
 			dtr.min = START_OF_VIEWPORT;
@@ -44,7 +43,8 @@ void				render(t_basic *s)
 		}
 		y++;
 	}
+	mlx_put_image_to_window(s->mlx, s->win, s->p_to_img, 0, 0);
 }
 
 // TODO check correctly work point_from_screen_to_viewport
-//TODO add funct that make right angle for camera view
+// TODO add funct that make right angle for camera view
