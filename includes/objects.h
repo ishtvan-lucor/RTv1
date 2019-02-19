@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 17:02:04 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/17 14:08:18 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/19 13:18:39 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,33 @@ typedef struct	s_sphere
 	t_vector	cntr;
 }				t_sphere;
 
+typedef struct	s_plane
+{
+	t_color		clr;
+	int			spcl;
+	double		rfl;
+	t_vector	point;
+	t_vector	nrm;
+}				t_plane;
+
+typedef struct	s_cylinder
+{
+	t_color		clr;
+	int			spcl;
+	double		rfl;
+	double		rds;
+	t_vector	start;
+	t_vector	axis;
+}				t_cylinder;
+
+typedef struct	s_cone
+{
+	t_color		clr;
+	int			spcl;
+	double		rfl;
+	double		angle;
+	t_vector	start;
+	t_vector	axis;
+}				t_cone;
 #endif
 
