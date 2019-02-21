@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 19:58:34 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/17 15:48:04 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/21 19:58:26 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,42 @@ static int	check_light(int fd, int obj, t_list **light)
 {
 	if (obj == SPOT)
 		return (val_spot(fd, light));
-	return (0);
+	else if (obj == AMBIENT)
+		return (val_ambient(fd, light));
+	else if (obj == DLS)
+		return (val_dls(fd, light));
+	return (ft_putstr("Critical error!\n"));
 }
 
 static int	check_prim(int fd, int obj, t_list **prim)
 {
 	if (obj == SPHERE)
 		return (val_sphere(fd, prim));
-	return (0);
+	else if (obj == PLANE)
+		return (val_plane(fd, prim));
+	else if (obj == CYLINDER)
+		return (val_cylinder(fd, prim));
+	else if (obj == CONE)
+		return (val_cone(fd, prim));
+	return (ft_putstr("Critical error!\n"));
 }
-
-//TODO add new primitives and lights
 
 static int	define_obj(char *line)
 {
 	if (!ft_strcmp(line, "sphere"))
 		return (SPHERE);
+	else if (!ft_strcmp(line, "plane"))
+		return (PLANE);
+	else if (!ft_strcmp(line, "cone"))
+		return (CONE);
+	else if (!ft_strcmp(line, "cylinder"))
+		return (CYLINDER);
 	else if (!ft_strcmp(line, "spot"))
 		return (SPOT);
+	else if (!ft_strcmp(line, "ambient"))
+		return (AMBIENT);
+	else if (!ft_strcmp(line, "directional"))
+		return (DLS);
 	else
 		return (-1);
 }
@@ -75,5 +93,4 @@ int			validation_config(char *config, t_basic *sv)
 	return (0);
 }
 
-// TODO if rewrite parsing read about ini file
 //todo MAN_CONF
