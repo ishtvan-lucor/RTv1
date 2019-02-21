@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:49:50 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/21 17:18:00 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/21 19:14:45 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	check_param(char *line, int *set)
 		set[4] = 1;
 }
 
-static int	check_present_main_param(const int *set_param)
+static int	check_presence_main_param(const int *set_param)
 {
 	int	res;
 
@@ -86,11 +86,11 @@ static int	read_line(int fd, t_sphere *s)
 		if (find_data(line, s))
 		{
 			free(line);
-			return (ft_putstr("ERROR: invalid sphere! MAN_CONF"));
+			return (ft_putstr("ERROR: invalid sphere! MAN_CONF\n"));
 		}
 		free(line);
 	}
-	if (check_present_main_param(param_set))
+	if (check_presence_main_param(param_set))
 		return (ft_putstr("Some parameters in sphere missed=)\n"));
 	return (0);
 }
@@ -101,7 +101,7 @@ int			val_sphere(int fd, t_list **prim)
 	t_list		*temp;
 
 	if (!(obj = (t_sphere*)malloc(sizeof(t_sphere))))
-		return (ft_putstr("Memory didn't allocated for sphere!"));
+		return (ft_putstr("Memory didn't allocated for sphere!\n"));
 	if (read_line(fd, obj))
 		return (1);
 	temp = ft_lstnew(obj, sizeof(t_sphere));
