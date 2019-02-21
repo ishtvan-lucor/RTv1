@@ -3,14 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   val_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:49:50 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/01/07 20:42:40 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/21 17:18:00 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+static void	check_param(char *line, int *set)
+{
+	if (ft_strstr(line, CLR))
+		set[0] = 1;
+	else if (ft_strstr(line, SPC))
+		set[1] = 1;
+	else if (ft_strstr(line, RFL))
+		set[2] = 1;
+	else if (ft_strstr(line, RDS))
+		set[3] = 1;
+	else if (ft_strstr(line, CNTR))
+		set[4] = 1;
+}
+
+static int	check_present_main_param(const int *set_param)
+{
+	int	res;
+
+	res = 0;
+	if (!set_param[0])
+		res += ft_putstr("ERROR: color missed! MAN_CONF\n");
+	if (!set_param[1])
+		res += ft_putstr("ERROR: specular missed! MAN_CONF\n");
+	if (!set_param[2])
+		res += ft_putstr("ERROR: reflective missed! MAN_CONF\n");
+	if (!set_param[3])
+		res += ft_putstr("ERROR: radius missed! MAN_CONF\n");
+	if (!set_param[4])
+		res += ft_putstr("ERROR: center missed! MAN_CONF\n");
+	return (res);
+}
 
 static int	find_data(char *line, t_sphere *sphere)
 {
@@ -40,40 +72,36 @@ static int	find_data(char *line, t_sphere *sphere)
 static int	read_line(int fd, t_sphere *s)
 {
 	char	*line;
-	int		counter;
+	int		param_set[5];
 
-	counter = 0;
-	while (get_next_line(fd, &line) == 1 && counter < 5)
+	bzero(param_set, 20);
+	while (get_next_line(fd, &line) == 1)
 	{
 		if (!ft_strcmp(line, DELIMITR))
 		{
 			free(line);
-			break;
+			break ;
 		}
+		check_param(line, param_set);
 		if (find_data(line, s))
 		{
 			free(line);
 			return (ft_putstr("ERROR: invalid sphere! MAN_CONF"));
 		}
 		free(line);
-		counter++;
 	}
+	if (check_present_main_param(param_set))
+		return (ft_putstr("Some parameters in sphere missed=)\n"));
 	return (0);
 }
-
-//TODO need to check about all needed parameters are set
 
 int			val_sphere(int fd, t_list **prim)
 {
 	t_sphere	*obj;
 	t_list		*temp;
 
-	obj = (t_sphere*)malloc(sizeof(t_sphere));
-	ft_set_vector(&obj->cntr, 5, 5, 5);
-	obj->rds = 1;
-	obj->clr.color = 0xffffff;
-	obj->spcl = SPECULAR;
-	obj->rfl = REFLECTIVE;
+	if (!(obj = (t_sphere*)malloc(sizeof(t_sphere))))
+		return (ft_putstr("Memory didn't allocated for sphere!"));
 	if (read_line(fd, obj))
 		return (1);
 	temp = ft_lstnew(obj, sizeof(t_sphere));
