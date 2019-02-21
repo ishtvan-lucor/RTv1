@@ -23,8 +23,8 @@ int	val_color(char **s, t_color *trg, size_t len)
 }
 
 /*
- *  Check line with type and double coordinate
- */
+** Check line with type and double coordinate
+*/
 
 int	val_double_cord(char **s, double *trg, size_t len)
 {
@@ -39,7 +39,7 @@ int	val_double_cord(char **s, double *trg, size_t len)
 }
 
 /*
-*  Check line with type and int coordinate
+** Check line with type and int coordinate
 */
 
 int	val_int_cord(char **s, int *trg, size_t len)
@@ -58,8 +58,8 @@ int	val_int_cord(char **s, int *trg, size_t len)
 }
 
 /*
- * Check valid vector coordinate like: type x y z
- */
+** Check valid vector coordinate like: type x y z
+*/
 
 int	val_vector(char **s, t_vector *trg, size_t len)
 {
