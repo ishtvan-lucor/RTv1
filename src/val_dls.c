@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 19:03:43 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/21 19:10:59 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/21 19:14:45 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	check_param(char *line, int *set)
 		set[1] = 1;
 }
 
-static int	check_present_main_param(const int *set_param)
+static int	check_presence_main_param(const int *set_param)
 {
 	int	res;
 
@@ -72,7 +72,7 @@ static int	read_line(int fd, t_dls *s)
 		}
 		free(line);
 	}
-	if (check_present_main_param(param_set))
+	if (check_presence_main_param(param_set))
 		return (ft_putstr("Some parameters in DLS missed=)\n"));
 	return (0);
 }

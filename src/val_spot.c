@@ -20,7 +20,7 @@ static void	check_param(char *line, int *set)
 		set[1] = 1;
 }
 
-static int	check_present_main_param(const int *set_param)
+static int	check_presence_main_param(const int *set_param)
 {
 	int	res;
 
@@ -72,7 +72,7 @@ static int	read_line(int fd, t_spot *s)
 		}
 		free(line);
 	}
-	if (check_present_main_param(param_set))
+	if (check_presence_main_param(param_set))
 		return (ft_putstr("Some parameters in light spot missed=)\n"));
 	return (0);
 }

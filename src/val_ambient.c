@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:48:47 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/21 19:18:51 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/21 19:25:10 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	check_param(char *line, int *set)
 		*set = 1;
 }
 
-static int	check_present_main_param(const int *set_param)
+static int	check_presence_main_param(const int *set_param)
 {
 	int	res;
 
@@ -66,7 +66,7 @@ static int	read_line(int fd, t_ambient *s)
 		}
 		free(line);
 	}
-	if (check_present_main_param(param_set))
+	if (check_presence_main_param(param_set))
 		return (ft_putstr("Some parameters in ambient light missed=)\n"));
 	return (0);
 }
