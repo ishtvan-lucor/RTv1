@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:48:47 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/21 19:10:59 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/21 19:18:51 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	read_line(int fd, t_ambient *s)
 int			val_ambient(int fd, t_list **light)
 {
 	t_ambient	*obj;
-	t_list	*temp;
+	t_list		*temp;
 
 	if (!(obj = (t_ambient*)malloc(sizeof(t_ambient))))
 		return (ft_putstr("Memory didn't allocated for ambient light!\n"));
