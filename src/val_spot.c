@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   val_spot.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 17:00:30 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/01/07 20:43:49 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/21 17:45:12 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+static void	check_param(char *line, int *set)
+{
+	if (ft_strstr(line, INTN))
+		set[0] = 1;
+	else if (ft_strstr(line, PSTN))
+		set[1] = 1;
+}
+
+static int	check_present_main_param(const int *set_param)
+{
+	int	res;
+
+	res = 0;
+	if (!set_param[0])
+		res += ft_putstr("ERROR: intensity missed! MAN_CONF\n");
+	if (!set_param[1])
+		res += ft_putstr("ERROR: position missed! MAN_CONF\n");
+	return (res);
+}
 
 static int	find_data(char *line, t_spot *spot)
 {
@@ -26,7 +46,7 @@ static int	find_data(char *line, t_spot *spot)
 	else if (!ft_strcmp(s[0], PSTN))
 		error_f = val_vector(s, &spot->position, len);
 	else
-		error_f = ft_putstr("ERROR: invalid parameter of spot! MAN_CONF");
+		error_f = ft_putstr("ERROR: invalid parameter of spot! MAN_CONF\n");
 	ft_free_after_split(s, len);
 	return (error_f);
 }
@@ -34,35 +54,36 @@ static int	find_data(char *line, t_spot *spot)
 static int	read_line(int fd, t_spot *s)
 {
 	char	*line;
-	int		counter;
+	int		param_set[2];
 
-	counter = 0;
-	while (get_next_line(fd, &line) == 1 && counter < 2)
+	bzero(param_set, 8);
+	while (get_next_line(fd, &line) == 1)
 	{
 		if (!ft_strcmp(line, DELIMITR))
 		{
 			free(line);
-			break;
+			break ;
 		}
+		check_param(line, param_set);
 		if (find_data(line, s))
 		{
 			free(line);
 			return (ft_putstr("ERROR: invalid light spot! MAN_CONF"));
 		}
 		free(line);
-		counter++;
 	}
+	if (check_present_main_param(param_set))
+		return (ft_putstr("Some parameters in light spot missed=)\n"));
 	return (0);
 }
 
-int	val_spot(int fd, t_list **light)
+int			val_spot(int fd, t_list **light)
 {
 	t_spot	*obj;
 	t_list	*temp;
 
-	obj = (t_spot*)malloc(sizeof(t_spot));
-	obj->intensity = 0.2;
-	ft_set_vector(&obj->position, 100, 100, 100);
+	if (!(obj = (t_spot*)malloc(sizeof(t_spot))))
+		return (ft_putstr("Memory didn't allocated for light spot!"));
 	if (read_line(fd, obj))
 		return (1);
 	temp = ft_lstnew(obj, sizeof(t_spot));
