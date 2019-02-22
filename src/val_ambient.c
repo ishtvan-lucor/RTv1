@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:48:47 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/21 19:25:10 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/22 16:56:15 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	find_data(char *line, t_ambient *light)
 static int	read_line(int fd, t_ambient *s)
 {
 	char	*line;
-	int		*param_set;
+	int		param_set;
 
 	param_set = 0;
 	while (get_next_line(fd, &line) == 1)
@@ -58,7 +58,7 @@ static int	read_line(int fd, t_ambient *s)
 			free(line);
 			break ;
 		}
-		check_param(line, param_set);
+		check_param(line, &param_set);
 		if (find_data(line, s))
 		{
 			free(line);
@@ -66,7 +66,7 @@ static int	read_line(int fd, t_ambient *s)
 		}
 		free(line);
 	}
-	if (check_presence_main_param(param_set))
+	if (check_presence_main_param(&param_set))
 		return (ft_putstr("Some parameters in ambient light missed=)\n"));
 	return (0);
 }
