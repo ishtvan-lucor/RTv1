@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 12:11:41 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/17 19:39:26 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/22 14:02:01 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static t_hs	check_intersection(t_vector *o, t_vector *d, const t_list *obj)
 	return (hits);
 }
 
+//TODO hits think about initialization
+
 void		get_closest_object(t_co *obj, t_data_tr *data, const t_list *entity)
 {
 	t_hs	hits;
@@ -45,9 +47,15 @@ void		get_closest_object(t_co *obj, t_data_tr *data, const t_list *entity)
 	{
 		hits = check_intersection(&data->start, &data->direction, temp);
 		if (check_t(hits.t1, data->min, data->max, &obj->t))
+		{
 			obj->obj = temp->content;
+			obj->type = temp->content_size;
+		}
 		if (check_t(hits.t2, data->min, data->max, &obj->t))
+		{
 			obj->obj = temp->content;
+			obj->type = temp->content_size;
+		}
 		temp = temp->next;
 	}
 }
