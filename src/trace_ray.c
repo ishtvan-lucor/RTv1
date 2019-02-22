@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 16:37:37 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/17 19:44:17 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/22 21:23:50 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@ static int	culc_clr(int cur_col, double comp)
 	res.clr[GREEN] = (UC)round((double)res.clr[GREEN] * comp);
 	res.clr[BLUE] = (UC)round((double)res.clr[BLUE] * comp);
 	return	(res.color);
+}
+
+static void	normalize(t_co *data, t_vector *o, t_vector *d)
+{
+	if (data->type == PLANE)
+		normalize_plane(data, o, d);
+	else if (data->type == SPHERE)
+		normalize_sphere(data, o, d);
+	else if (data->type == CYLINDER)
+		normalize_cylinder(data, o, d);
+	else if (data->type == CONE)
+		normalize_cone(data, o, d);
 }
 
 static void	calc_data_cl_obj(t_co *clst_obj, t_vector *d, t_vector *o,
