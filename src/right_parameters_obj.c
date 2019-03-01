@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 17:56:11 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/27 21:11:23 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/01 18:08:20 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,41 +19,23 @@ static int	check_zero_vector(t_vector *vector)
 	return (0);
 }
 
-int			analyze_light(t_list *l)
+static int	check_axis_obj(void *p, size_t type)
 {
-	while (l)
-	{
-		if (((t_alght*)(l))->intensity < 0.0 || ((t_alght*)(l))->intensity > 1.0)
-			return (ft_putstr("Incorrect intensity of light! MAN_CONF\n"));
-		if (l->content_size == DLS)
-		{
-			if (check_zero_vector(&((t_dls*)(l))->direction))
-				return (1);
-			else
-				((t_dls*)(l))->direction = v_nrm(&((t_dls*)(l))->direction);
-		}
-		l = l->next;
-	}
-	return (0);
-}
-
-int			check_axis_obj(t_list *p)
-{
-	if (p->content_size == PLANE)
+	if (type == PLANE)
 	{
 		if (check_zero_vector(&((t_plane*)p)->nrm))
 			return (1);
 		else
 			((t_plane*)p)->nrm = v_nrm(&((t_plane*)p)->nrm);
 	}
-	else if (p->content_size == CYLINDER)
+	else if (type == CYLINDER)
 	{
 		if (check_zero_vector(&((t_cylinder*)p)->axis))
 			return (1);
 		else
 			((t_cylinder*)p)->axis = v_nrm(&((t_cylinder*)p)->axis);
 	}
-	else if (p->content_size == CONE)
+	else if (type == CONE)
 	{
 		if (check_zero_vector(&((t_cone*)p)->axis))
 			return (1);
@@ -63,29 +45,38 @@ int			check_axis_obj(t_list *p)
 	return (0);
 }
 
-int			analyze_prim(t_list *p)
+static void	make_average_intensity(double coefficient, t_list *light)
 {
-	while (p)
-	{
-		printf("---->   %zu\n", p->content_size);
-		if (p->content_size == SPHERE)
-			printf("abstract == %d, sphere == %d\n", ((t_aprm*)p)->spcl, ((t_sphere*)p)->spcl);
-		else if (p->content_size == PLANE)
-			printf("plan speculat = : %d\n", ((t_plane*)p->content)->spcl);
+	void	*p;
 
+	while (light)
+	{
+		p = light->content;
+		((t_alght*)p)->intensity = coefficient * ((t_alght*)p)->intensity;
+		light = light->next;
+	}
+}
+
+int			analyze_prim(t_list *list)
+{
+	void	*p;
+
+	while (list)
+	{
+		p = list->content;
 		if (((t_aprm*)(p))->rfl < 0 || ((t_aprm*)(p))->rfl > 1)
 			return (ft_putstr("Incorrect reflective of object! MAN_CONF\n"));
 		if (((t_aprm*)(p))->spcl < 10 || ((t_aprm*)(p))->spcl > 1000)
 			return (ft_putstr("Incorrect specular of object! MAN_CONF\n"));
-		if (p->content_size == SPHERE && ((t_sphere*)(p))->rds <= 0)
+		if (list->content_size == SPHERE && ((t_sphere*)(p))->rds <= 0)
 			return (ft_putstr("Incorrect radius of object! MAN_CONF\n"));
-		if (p->content_size == CYLINDER && ((t_cylinder*)(p))->rds <= 0)
+		if (list->content_size == CYLINDER && ((t_cylinder*)(p))->rds <= 0)
 			return (ft_putstr("Incorrect radius of object! MAN_CONF\n"));
-		if (check_axis_obj(p))
+		if (check_axis_obj(p, list->content_size))
 			return (1);
-		if (p->content_size == CONE)
+		if (list->content_size == CONE)
 		{
-			if (((t_cone*)p)->angle < 1 || ((t_cone*)p)->angle > 179)
+			if (((t_cone*)p)->angle < 10 || ((t_cone*)p)->angle > 179)
 				return (ft_putstr("Incorrect angle of object! MAN_CONF\n"));
 			else
 			{
@@ -93,20 +84,35 @@ int			analyze_prim(t_list *p)
 				//((t_cone*)p)->angle = pow(((t_cone*)p)->angle, 2) + 1;
 			}
 		}
-		p = p->next;
+		list = list->next;
 	}
 	return (0);
 }
 
-int			right_parameters_obj(t_list *prim, t_list *light)
+int			analyze_light(t_list *light)
 {
-	t_list	*obj;
+	double	intensity;
+	t_list	*begin;
+	void	*obj;
 
-	obj = light;
-	if (analyze_light(obj))
-		return (1);
-	obj = prim;
-	if (analyze_prim(obj))
-		return (1);
+	begin = light;
+	intensity = 0.0;
+	while (light)
+	{
+		obj = light->content;
+		if (((t_alght*)obj)->intensity < 0 || ((t_alght*)obj)->intensity > 1)
+			return (ft_putstr("Incorrect intensity of light! MAN_CONF\n"));
+		intensity += ((t_alght*)obj)->intensity;
+		if (light->content_size == DLS)
+		{
+			if (check_zero_vector(&((t_dls*)obj)->direction))
+				return (1);
+			else
+				((t_dls*)obj)->direction = v_nrm(&((t_dls*)obj)->direction);
+		}
+		light = light->next;
+	}
+	if (intensity > 1)
+		make_average_intensity((1 / intensity), begin);
 	return (0);
 }
