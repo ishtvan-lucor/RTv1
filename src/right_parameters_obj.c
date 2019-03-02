@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 17:56:11 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/03/01 18:08:20 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/02 22:02:24 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,10 @@ int			analyze_prim(t_list *list)
 			return (1);
 		if (list->content_size == CONE)
 		{
-			if (((t_cone*)p)->angle < 10 || ((t_cone*)p)->angle > 179)
+			if (((t_cone*)p)->angle < 1 || ((t_cone*)p)->angle > 179)
 				return (ft_putstr("Incorrect angle of object! MAN_CONF\n"));
 			else
-			{
-				((t_cone*)p)->angle = (((t_cone*)p)->angle * M_PI / 180.0);
-				//((t_cone*)p)->angle = pow(((t_cone*)p)->angle, 2) + 1;
-			}
+				((t_cone*)p)->angle = tan((((t_cone*)p)->angle * M_PI / 360.0));
 		}
 		list = list->next;
 	}
