@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   val_camera.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 20:22:32 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/01/07 17:22:59 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/02 19:51:00 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,47 @@ static int	get_points(const char *line, t_vector *cmr)
 	return (error_f);
 }
 
-int			val_camera(int fd, t_vector *cmr)
+static int	get_rot(char *line, int *rot_x, int *rot_y)
+{
+	char	**s;
+	int		error;
+	size_t	len;
+
+	len = ft_wordssplit(line, ' ');
+	if (!(s = ft_strsplit(line, ' ')))
+		return (ft_putstr("ERROR: to big string=)\n"));
+	if (!ft_strcmp(s[0], ROT_X))
+		error = val_int_cord(s, rot_x, len);
+	else if (!ft_strcmp(s[0], ROT_Y))
+		error = val_int_cord(s, rot_y, len);
+	else
+		error = ft_putstr("ERROR: invalid rotation of camera! MAN_CONF\n");
+	return (error);
+}
+
+int			val_camera(int fd, t_vector *cmr, int *rot_x, int *rot_y)
 {
 	char	*line;
 	int		res;
 
-	if (get_next_line(fd, &line) != 1)
+	*rot_x = 0;
+	*rot_y = 0;
+	res = 0;
+	if (get_next_line(fd, &line) == 1 && !(res = get_points(line, cmr)))
 	{
 		free(line);
-		return (ft_putstr("ERROR: problem with reading config file!\n"));
+		while (get_next_line(fd, &line) == 1)
+		{
+			if (!ft_strcmp(line, DELIMITR))
+				break ;
+			if ((res = get_rot(line, rot_x, rot_y)))
+				break ;
+			free(line);
+		}
+		free(line);
+		return (res);
 	}
-	res = get_points(line, cmr);
-	free(line);
-	get_next_line(fd, &line);
-	if (ft_strcmp(line, DELIMITR))
-		res = ft_putstr("ERROR: Wrong syntax! MAN_CONF\n");
-	free(line);
+	if (!res)
+		return (ft_putstr("ERROR: problem with reading config file!\n"));
 	return (res);
 }
