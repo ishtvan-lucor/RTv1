@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 16:37:37 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/22 21:23:50 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/26 13:55:39 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ static int	culc_clr(int cur_col, double comp)
 static void	normalize(t_co *data, t_vector *o, t_vector *d)
 {
 	if (data->type == PLANE)
-		normalize_plane(data, o, d);
+		nrm_plane(data, d);
 	else if (data->type == SPHERE)
-		normalize_sphere(data, o, d);
+		nrm_sphere(data);
 	else if (data->type == CYLINDER)
-		normalize_cylinder(data, o, d);
+		nrm_cylinder(data, d, o);
 	else if (data->type == CONE)
-		normalize_cone(data, o, d);
+		nrm_cone(data, d, o);
 }
 
 static void	calc_data_cl_obj(t_co *clst_obj, t_vector *d, t_vector *o,
@@ -43,12 +43,7 @@ static void	calc_data_cl_obj(t_co *clst_obj, t_vector *d, t_vector *o,
 
 	temp = v_mult_n(d, clst_obj->t);
 	clst_obj->hit =v_plus(o, &temp);
-
-	//TODO normalize for all universal
-	clst_obj->nrm = ((t_sphere*)(clst_obj->obj))->cntr;
-	clst_obj->nrm = v_minus(&clst_obj->hit, &clst_obj->nrm);
-	clst_obj->nrm = v_nrm(&clst_obj->nrm);
-
+	normalize(clst_obj, o, d);
 	clst_obj->color = ((t_aprm*)(clst_obj->obj))->clr.color;
 	clst_obj->spcl = ((t_aprm*)(clst_obj->obj))->spcl;
 	clst_obj->rfl = ((t_aprm*)(clst_obj->obj))->rfl;
