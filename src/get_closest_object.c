@@ -30,6 +30,12 @@ static t_hs	check_intersection(t_vector *o, t_vector *d, const t_list *obj)
 	hits.t2 = INFINITY_RAY_DIST;
 	if (obj->content_size == SPHERE)
 		hits = sphere_intersection(o, d, obj->content);
+	else if (obj->content_size == PLANE)
+		hits = plane_intersection(o, d, obj->content);
+	else if (obj->content_size == CYLINDER)
+		hits = cylinder_intersection(o, d, obj->content);
+	else if (obj->content_size == CONE)
+		hits = cone_intersection(o, d, obj->content);
 	return (hits);
 }
 
