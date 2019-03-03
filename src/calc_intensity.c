@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   culc_intensity.c                                    :+:      :+:    :+:   */
+/*   calc_intensity.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:13:06 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/16 22:41:31 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/03 21:08:02 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static double	diffuse(double bright, const t_vector *nrm, t_vector *drct)
 	return (diff);
 }
 
-static double	shine(const t_co *data, t_vector *drct, double bright)
+static double	shine(t_co *data, t_vector *drct, double bright)
 {
 	double		shine;
 	t_vector	reflect_ray;
@@ -37,52 +37,50 @@ static double	shine(const t_co *data, t_vector *drct, double bright)
 	return (shine);
 }
 
-static double	culc_effects(const t_co *point, t_data_tr *d, void *light, const t_list *prim)
+static double	calc_effects(t_co *point, t_data_tr *d, void *light,
+	const t_list *prim)
 {
 	double	res;
-	double	bright;
-	t_co	test;
 
 	res = 0.0;
-	get_closest_object(&test, d, prim);
-	if (test.obj)
+	get_closest_object(point, d, prim);
+	if (point->obj)
 		return (res);
-	bright = ((t_alght*)(light))->intensity;
-	res += diffuse(bright, &point->nrm, &d->direction);
+	res += diffuse(((t_alght*)(light))->intensity, &point->nrm, &d->direction);
 	if (point->spcl > 0)
-		res += shine(point, &d->direction, bright);
+		res += shine(point, &d->direction, ((t_alght*)(light))->intensity);
 	return (res);
 }
 
-//TODO optimization: use the same struct s_closet_object
+static void		set_data(t_data_tr *data, double max, t_vector direction)
+{
+	data->max = max;
+	data->direction = direction;
+}
 
-double			culc_intensity(const t_co *point, const t_list *light, const t_list *prim)
+double			calc_intensity(t_co *point_data, t_data_tr *data,
+	const t_list *light, const t_list *prim)
 {
 	double		intensity;
-	t_data_tr	d;
 
-	d.start = point->hit;
-	d.min = START_NEAR_SURFACE;
 	intensity = 0.0;
+	data->start = point_data->hit;
+	data->min = START_NEAR_SURFACE;
 	while (light)
 	{
 		if (light->content_size == AMBIENT)
 		{
-			intensity = ((t_alght *) (light->content))->intensity;
+			intensity = ((t_alght *)(light->content))->intensity;
 			light = light->next;
 			continue ;
 		}
 		if (light->content_size == SPOT)
-		{
-			d.direction = v_minus(&((t_spot*)(light->content))->position, &d.start);
-			d.max = 1.0;
-		}
+			set_data(data, 1.0, v_minus(&((t_spot*)(light->content))->position,
+				&data->start));
 		else if (light->content_size == DLS)
-		{
-			d.direction = ((t_dls*)(light->content))->direction;
-			d.max = INFINITY_RAY_DIST;
-		}
-		intensity += culc_effects(point, &d, light->content, prim);
+			set_data(data, INFINITY_RAY_DIST,
+				((t_dls*)(light->content))->direction);
+		intensity += calc_effects(point_data, data, light->content, prim);
 		light = light->next;
 	}
 	if (intensity > 1.0)
