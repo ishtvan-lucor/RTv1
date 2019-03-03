@@ -39,8 +39,6 @@ static t_hs	check_intersection(t_vector *o, t_vector *d, const t_list *obj)
 	return (hits);
 }
 
-//TODO hits think about initialization
-
 void		get_closest_object(t_co *obj, t_data_tr *data, const t_list *entity)
 {
 	t_hs	hits;
@@ -65,5 +63,3 @@ void		get_closest_object(t_co *obj, t_data_tr *data, const t_list *entity)
 		temp = temp->next;
 	}
 }
-
-//TODO optimization a lot

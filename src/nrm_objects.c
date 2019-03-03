@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 17:36:28 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/26 19:15:12 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/02/26 20:02:42 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	nrm_cylinder(t_co *data, t_vector *d, t_vector *o)
 
 void	nrm_cone(t_co *data, t_vector *d, t_vector *o)
 {
-	double	m;
+	double		m;
 	t_vector	axis;
 	t_vector	x;
 
