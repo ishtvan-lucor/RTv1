@@ -34,7 +34,6 @@ SRC = src/main.c \
 	  src/nrm_objects.c \
 	  src/calc_intensity.c \
 	  src/reflection_ray.c \
-	  src/vector_writer.c \
 
 HDR = includes/RTv1.h
 OFL = $(SRC:.c=.o)
