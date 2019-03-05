@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "../includes/rtv1.h"
 
 static int	get_points(const char *line, t_vector *cmr)
 {

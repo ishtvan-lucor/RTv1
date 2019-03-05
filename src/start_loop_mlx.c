@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "../includes/rtv1.h"
 
 static int	catch_esc(int key, t_basic *storage)
 {

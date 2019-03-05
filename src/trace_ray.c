@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "../includes/rtv1.h"
 
 static int	calc_clr(int cur_col, double comp)
 {

@@ -6,11 +6,11 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:13:06 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/03/03 21:08:02 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/05 21:58:13 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "../includes/rtv1.h"
 
 static double	diffuse(double bright, const t_vector *nrm, t_vector *drct)
 {

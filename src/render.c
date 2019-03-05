@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "../includes/rtv1.h"
 
 static t_vector	point_from_screen_to_viewport(int x, int y)
 {

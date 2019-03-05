@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "../includes/rtv1.h"
 
 t_hs	sphere_intersection(t_vector *o, t_vector *d, const void *obj)
 {

@@ -6,11 +6,11 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 17:36:28 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/03/05 21:08:27 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/05 22:02:14 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "../includes/rtv1.h"
 
 void	nrm_plane(t_co *data, t_vector *d)
 {

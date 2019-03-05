@@ -6,11 +6,11 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 17:56:11 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/03/02 22:02:24 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/05 22:00:19 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "../includes/rtv1.h"
 
 static int	check_zero_vector(t_vector *vector)
 {
@@ -66,8 +66,6 @@ int			analyze_prim(t_list *list)
 		p = list->content;
 		if (((t_aprm*)(p))->rfl < 0 || ((t_aprm*)(p))->rfl > 1)
 			return (ft_putstr("Incorrect reflective of object! MAN_CONF\n"));
-		if (((t_aprm*)(p))->spcl < 10 || ((t_aprm*)(p))->spcl > 1000)
-			return (ft_putstr("Incorrect specular of object! MAN_CONF\n"));
 		if (list->content_size == SPHERE && ((t_sphere*)(p))->rds <= 0)
 			return (ft_putstr("Incorrect radius of object! MAN_CONF\n"));
 		if (list->content_size == CYLINDER && ((t_cylinder*)(p))->rds <= 0)

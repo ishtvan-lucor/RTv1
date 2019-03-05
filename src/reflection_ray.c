@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "../includes/rtv1.h"
 
 t_vector	reflection_ray(const t_vector *drct, const t_vector *nrm)
 {

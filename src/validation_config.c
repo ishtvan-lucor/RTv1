@@ -6,11 +6,11 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 19:58:34 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/03/05 15:41:17 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/05 15:42:07 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "../includes/rtv1.h"
 
 static int	check_light(int fd, int obj, t_list **light)
 {
