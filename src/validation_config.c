@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 19:58:34 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/21 19:58:26 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/05 15:41:17 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int			validation_config(char *config, t_basic *sv)
 
 	if ((fd = open(config, O_RDONLY)) == -1)
 		return (ft_putstr("ERROR: fail read!\n"));
-	if (val_camera(fd, &sv->cmr))
+	if (val_camera(fd, &sv->cmr, &sv->rot_x, &sv->rot_y))
 		return (ft_putstr("ERROR: incorrect camera data! MAN_CONF\n"));
 	if (find_objects(fd, &sv->light, &sv->prim))
 		return (1);
@@ -92,5 +92,4 @@ int			validation_config(char *config, t_basic *sv)
 		return (ft_putstr("ERROR: fail close!\n"));
 	return (0);
 }
-
-//todo MAN_CONF
+// todo check on empty line
