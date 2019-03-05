@@ -28,8 +28,8 @@ SRC = src/main.c \
 	  src/init_mlx.c \
 	  src/start_loop_mlx.c \
 	  src/render.c \
-	  src/trace_ray.c
-	  src/get_closet_object.c \
+	  src/trace_ray.c \
+	  src/get_closest_object.c \
 	  src/intersection.c \
 	  src/nrm_objects.c \
 	  src/calc_intensity.c \

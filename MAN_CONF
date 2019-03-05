@@ -1,9 +1,10 @@
-First data must be about position of camera. Rotation can be missed(default x: 0, y: 0). Next you can add any object using '+'.
+First data must be about position of camera.
+Rotation can be missed(default x: 0, y: 0). Next you can add any object using '+'.
 Put '+' in single line, after type in new line name of object(primitive or light).
 Put name of parameter, than data divided by 'space'.
 
 !!If you miss some parameter or make mistake, you get error!!
-!!Undefined behaviour: put lifht spot on object surface!!
+!!Undefined behaviour: put light spot on object surface!!
 
 Objects and parameters:
 1. Camera: camera, rotationX, rotationY
@@ -23,10 +24,10 @@ Valid values:
   radius: > 0
   angle: [1 - 179]
   reflective: [0.0 - 1.1]
-  specular: [10 - 1000]
+  specular: < 1 - not specular
   axis, normal: not zero vector
  
-Exemple:
+Example:
 camera 0 0 0
 +
 sphere
