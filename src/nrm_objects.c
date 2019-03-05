@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 17:36:28 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/26 20:02:42 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/05 21:08:27 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	nrm_plane(t_co *data, t_vector *d)
 
 	data->nrm = ((t_plane*)(data->obj))->nrm;
 	tmp = v_dot_prd(d, &data->nrm);
-	if (tmp < 0)
+	if (tmp >= 0)
 		data->nrm = v_mult_n(&data->nrm, (-1));
 }
 
