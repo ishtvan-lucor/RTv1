@@ -1,0 +1,128 @@
+camera 0 0 -20
++
+plane
+color 0x0000ff
+specular 10
+reflective 0.0
+normal 0 0 1
+point 0 0 30
++
+plane
+color 0xffffff
+specular 10
+reflective 0.1
+normal 0 1 0
+point 0 5 9
++
+plane
+color 0xffffff
+specular 10
+reflective 0.0
+normal 0 1 0
+point 0 -5 0
++
+cylinder
+color 0xffffff
+specular 250
+reflective 0.0
+radius 1
+normal 0 1 0
+point 5 0 10
++
+sphere
+color 0xffffff
+specular 250
+reflective 0.3
+radius 2
+center 5 5 10
++
+sphere
+color 0xffffff
+reflective 0.4
+specular 250
+radius 2
+center 5 -5 10
++
+cylinder
+color 0xffffff
+specular 250
+reflective 0.0
+radius 1
+normal 0 1 0
+point -5 0 10
++
+sphere
+color 0xffffff
+pecular 250
+reflective 0.0
+radius 2
+center -5 5 10
++
+sphere
+color 0xffffff
+specular 250
+reflective 0.0
+radius 2
+center -5 -5 10
++
+cylinder
+color 0xffffff
+specular 250
+reflective 0.0
+radius 1
+normal 0 1 0
+point 4 0 -6
++
+sphere
+color 0xffffff
+specular 250
+reflective 0.4
+radius 2
+center 4 5 -6
++
+sphere
+color 0xffffff
+reflective 0.4
+specular 250
+radius 2
+center 4 -5 -6
++
+cylinder
+color 0xffffff
+specular 250
+reflective 0.8
+radius 1
+normal 0 1 0
+point -4 0 -6
++
+sphere
+color 0xffffff
+specular 250
+reflective 0.2
+radius 2
+center -4 5 -6
++
+sphere
+color 0xffffff
+specular 250
+reflective 0.1
+radius 2
+center-4 -5 -6
++
+sphere
+color 0xc80b9
+specular 250
+reflective 0.4
+radius 1
+center 0 -4-4
++
+spot
+intensity 0.4
+position 40 5 -15
++
+spot
+intensity 0.4
+position -40 5 -15
++
+ambient
+intesity 0.1

@@ -1,0 +1,49 @@
+camera 0 0 -30
++
+spot
+intensity 10
+position -20 0 -2
++
+sphere
+color 0xff0000
+specular 100
+reflective 0.0
+radius 2
+center -4 0 8
++
+sphere
+color 0xffffff
+specular 50
+reflective 0.2
+radius 2
+center 0 0 8
++
+sphere
+color 0xffffff
+specular 0
+reflective 0.3
+radius 2
+center 4 0 8
++
+cylinder
+color 0x00ffff
+specular 250
+reflective 0.1
+radius 1
+axis 0 1 0
+point 4 0 8
++
+cylinder
+color 0x00ffff
+reflective 0.0
+specular 250
+radius 1
+axis 0 1 0
+point 4 0 8
++
+plane
+color 0x718fff
+specular 50
+reflective 0.1
+normal 2 0 2
+point 1 1 15
