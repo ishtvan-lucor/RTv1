@@ -1,4 +1,5 @@
 camera 0 0 -20
+rotationY 0
 +
 plane
 color 0x0000ff
@@ -10,23 +11,23 @@ point 0 0 30
 plane
 color 0xffffff
 specular 10
-reflective 0.1
+reflective 0.0
 normal 0 1 0
-point 0 5 9
+point 0 -5 0
 +
 plane
 color 0xffffff
 specular 10
 reflective 0.0
 normal 0 1 0
-point 0 -5 0
+point 0 5 0
 +
 cylinder
 color 0xffffff
 specular 250
 reflective 0.0
 radius 1
-normal 0 1 0
+axis 0 1 0
 point 5 0 10
 +
 sphere
@@ -48,19 +49,19 @@ color 0xffffff
 specular 250
 reflective 0.0
 radius 1
-normal 0 1 0
+axis 0 1 0
 point -5 0 10
 +
 sphere
 color 0xffffff
-pecular 250
+specular 250
 reflective 0.0
 radius 2
 center -5 5 10
 +
 sphere
 color 0xffffff
-specular 250
+specular 0
 reflective 0.0
 radius 2
 center -5 -5 10
@@ -70,7 +71,7 @@ color 0xffffff
 specular 250
 reflective 0.0
 radius 1
-normal 0 1 0
+axis 0 1 0
 point 4 0 -6
 +
 sphere
@@ -92,7 +93,7 @@ color 0xffffff
 specular 250
 reflective 0.8
 radius 1
-normal 0 1 0
+axis 0 1 0
 point -4 0 -6
 +
 sphere
@@ -107,22 +108,19 @@ color 0xffffff
 specular 250
 reflective 0.1
 radius 2
-center-4 -5 -6
+center -4 -5 -6
 +
 sphere
-color 0xc80b9
-specular 250
+color 0xff0000
+specular 3
 reflective 0.4
 radius 1
-center 0 -4-4
+center 0 -3 -5
 +
 spot
-intensity 0.4
-position 40 5 -15
+intensity 0.5
+position 10 0 -25
 +
 spot
-intensity 0.4
-position -40 5 -15
-+
-ambient
-intesity 0.1
+intensity 0.5
+position -10 0 -25

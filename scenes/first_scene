@@ -1,7 +1,7 @@
 camera 0 0 -30
 +
 spot
-intensity 10
+intensity 1
 position -20 0 -2
 +
 sphere
@@ -20,7 +20,7 @@ center 0 0 8
 +
 sphere
 color 0xffffff
-specular 0
+specular 10
 reflective 0.3
 radius 2
 center 4 0 8
@@ -47,3 +47,6 @@ specular 50
 reflective 0.1
 normal 2 0 2
 point 1 1 15
++
+ambient
+intensity 0.2
