@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 19:25:50 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/27 21:23:41 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/09 15:00:02 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static int	find_data(char *line, t_plane *plane)
 	int		error_f;
 	size_t	len;
 
-	len = ft_wordssplit(line, ' ');
+	if ((len = ft_wordssplit(line, ' ')) == 0)
+		return (ft_putstr("Error: empty line!\n"));
 	if (!(s = ft_strsplit(line, ' ')))
 		return (ft_putstr("ERROR: to big string=)\n"));
 	if (!ft_strcmp(s[0], POINT))
@@ -78,18 +79,16 @@ static int	read_line(int fd, t_plane *s)
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (!ft_strcmp(line, DELIMITR))
-		{
-			free(line);
 			break ;
-		}
-		check_param(line, param_set);
 		if (find_data(line, s))
 		{
 			free(line);
 			return (ft_putstr("ERROR: invalid plane! MAN_CONF\n"));
 		}
+		check_param(line, param_set);
 		free(line);
 	}
+	free(line);
 	if (check_presence_main_param(param_set))
 		return (ft_putstr("Some parameters in plane missed=)\n"));
 	return (0);
@@ -103,9 +102,13 @@ int			val_plane(int fd, t_list **prim)
 	if (!(obj = (t_plane*)malloc(sizeof(t_plane))))
 		return (ft_putstr("Memory didn't allocated for plane!\n"));
 	if (read_line(fd, obj))
+	{
+		free(obj);
 		return (1);
+	}
 	temp = ft_lstnew(obj, sizeof(t_plane));
 	temp->content_size = PLANE;
 	ft_lstadd(prim, temp);
+	free(obj);
 	return (0);
 }

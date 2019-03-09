@@ -38,7 +38,8 @@ static int	find_data(char *line, t_dls *spot)
 	int		error_f;
 	size_t	len;
 
-	len = ft_wordssplit(line, ' ');
+	if ((len = ft_wordssplit(line, ' ')) == 0)
+		return (ft_putstr("Error: empty line!\n"));
 	if (!(s = ft_strsplit(line, ' ')))
 		return (ft_putstr("ERROR: to big string=)\n"));
 	if (!ft_strcmp(s[0], INTN))
@@ -60,18 +61,16 @@ static int	read_line(int fd, t_dls *s)
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (!ft_strcmp(line, DELIMITR))
-		{
-			free(line);
 			break ;
-		}
-		check_param(line, param_set);
 		if (find_data(line, s))
 		{
 			free(line);
 			return (ft_putstr("ERROR: invalid DLS! MAN_CONF\n"));
 		}
+		check_param(line, param_set);
 		free(line);
 	}
+	free(line);
 	if (check_presence_main_param(param_set))
 		return (ft_putstr("Some parameters in DLS missed=)\n"));
 	return (0);
@@ -85,9 +84,13 @@ int			val_dls(int fd, t_list **light)
 	if (!(obj = (t_dls*)malloc(sizeof(t_dls))))
 		return (ft_putstr("Memory didn't allocated for DLS!\n"));
 	if (read_line(fd, obj))
+	{
+		free(obj);
 		return (1);
+	}
 	temp = ft_lstnew(obj, sizeof(t_dls));
 	temp->content_size = DLS;
 	ft_lstadd(light, temp);
+	free(obj);
 	return (0);
 }

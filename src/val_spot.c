@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 17:00:30 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/21 17:45:12 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/09 13:39:33 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ static int	find_data(char *line, t_spot *spot)
 	int		error_f;
 	size_t	len;
 
-	len = ft_wordssplit(line, ' ');
+	if ((len = ft_wordssplit(line, ' ')) == 0)
+		return (ft_putstr("Error: empty line!\n"));
 	if (!(s = ft_strsplit(line, ' ')))
 		return (ft_putstr("ERROR: to big string=)\n"));
 	if (!ft_strcmp(s[0], INTN))
@@ -60,18 +61,16 @@ static int	read_line(int fd, t_spot *s)
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (!ft_strcmp(line, DELIMITR))
-		{
-			free(line);
 			break ;
-		}
-		check_param(line, param_set);
 		if (find_data(line, s))
 		{
 			free(line);
-			return (ft_putstr("ERROR: invalid light spot! MAN_CONF"));
+			return (ft_putstr("ERROR: invalid light spot! MAN_CONF\n"));
 		}
+		check_param(line, param_set);
 		free(line);
 	}
+	free(line);
 	if (check_presence_main_param(param_set))
 		return (ft_putstr("Some parameters in light spot missed=)\n"));
 	return (0);
@@ -83,11 +82,15 @@ int			val_spot(int fd, t_list **light)
 	t_list	*temp;
 
 	if (!(obj = (t_spot*)malloc(sizeof(t_spot))))
-		return (ft_putstr("Memory didn't allocated for light spot!"));
+		return (ft_putstr("Memory didn't allocated for light spot!\n"));
 	if (read_line(fd, obj))
+	{
+		free(obj);
 		return (1);
+	}
 	temp = ft_lstnew(obj, sizeof(t_spot));
 	temp->content_size = SPOT;
 	ft_lstadd(light, temp);
+	free(obj);
 	return (0);
 }

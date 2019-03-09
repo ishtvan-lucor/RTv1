@@ -34,7 +34,8 @@ static int	find_data(char *line, t_ambient *light)
 	int		error_f;
 	size_t	len;
 
-	len = ft_wordssplit(line, ' ');
+	if ((len = ft_wordssplit(line, ' ')) == 0)
+		return (ft_putstr("Error: empty line!\n"));
 	if (!(s = ft_strsplit(line, ' ')))
 		return (ft_putstr("ERROR: to big string=)\n"));
 	if (!ft_strcmp(s[0], INTN))
@@ -54,18 +55,16 @@ static int	read_line(int fd, t_ambient *s)
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (!ft_strcmp(line, DELIMITR))
-		{
-			free(line);
 			break ;
-		}
-		check_param(line, &param_set);
 		if (find_data(line, s))
 		{
 			free(line);
 			return (ft_putstr("ERROR: invalid ambient light! MAN_CONF\n"));
 		}
+		check_param(line, &param_set);
 		free(line);
 	}
+	free(line);
 	if (check_presence_main_param(&param_set))
 		return (ft_putstr("Some parameters in ambient light missed=)\n"));
 	return (0);
@@ -79,9 +78,13 @@ int			val_ambient(int fd, t_list **light)
 	if (!(obj = (t_ambient*)malloc(sizeof(t_ambient))))
 		return (ft_putstr("Memory didn't allocated for ambient light!\n"));
 	if (read_line(fd, obj))
+	{
+		free(obj);
 		return (1);
+	}
 	temp = ft_lstnew(obj, sizeof(t_ambient));
 	temp->content_size = AMBIENT;
 	ft_lstadd(light, temp);
+	free(obj);
 	return (0);
 }

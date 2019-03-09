@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:49:50 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/21 19:14:45 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/09 13:27:24 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static int	find_data(char *line, t_sphere *sphere)
 	int		error_f;
 	size_t	len;
 
-	len = ft_wordssplit(line, ' ');
+	if ((len = ft_wordssplit(line, ' ')) == 0)
+		return (ft_putstr("Error: empty line!\n"));
 	if (!(s = ft_strsplit(line, ' ')))
 		return (ft_putstr("ERROR: to big string=)\n"));
 	if (!ft_strcmp(s[0], CNTR))
@@ -78,18 +79,16 @@ static int	read_line(int fd, t_sphere *s)
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (!ft_strcmp(line, DELIMITR))
-		{
-			free(line);
 			break ;
-		}
-		check_param(line, param_set);
 		if (find_data(line, s))
 		{
 			free(line);
 			return (ft_putstr("ERROR: invalid sphere! MAN_CONF\n"));
 		}
+		check_param(line, param_set);
 		free(line);
 	}
+	free(line);
 	if (check_presence_main_param(param_set))
 		return (ft_putstr("Some parameters in sphere missed=)\n"));
 	return (0);
@@ -103,9 +102,13 @@ int			val_sphere(int fd, t_list **prim)
 	if (!(obj = (t_sphere*)malloc(sizeof(t_sphere))))
 		return (ft_putstr("Memory didn't allocated for sphere!\n"));
 	if (read_line(fd, obj))
+	{
+		free(obj);
 		return (1);
+	}
 	temp = ft_lstnew(obj, sizeof(t_sphere));
 	temp->content_size = SPHERE;
 	ft_lstadd(prim, temp);
+	free(obj);
 	return (0);
 }

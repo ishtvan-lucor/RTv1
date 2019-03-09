@@ -54,7 +54,8 @@ static int	find_data(char *line, t_cone *cone)
 	int		error_f;
 	size_t	len;
 
-	len = ft_wordssplit(line, ' ');
+	if ((len = ft_wordssplit(line, ' ')) == 0)
+		return (ft_putstr("Error: empty line!\n"));
 	if (!(s = ft_strsplit(line, ' ')))
 		return (ft_putstr("ERROR: to big string=)\n"));
 	if (!ft_strcmp(s[0], POINT))
@@ -84,18 +85,16 @@ static int	read_line(int fd, t_cone *s)
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (!ft_strcmp(line, DELIMITR))
-		{
-			free(line);
 			break ;
-		}
-		check_param(line, param_set);
 		if (find_data(line, s))
 		{
 			free(line);
 			return (ft_putstr("ERROR: invalid cone! MAN_CONF\n"));
 		}
+		check_param(line, param_set);
 		free(line);
 	}
+	free(line);
 	if (check_presence_main_param(param_set))
 		return (ft_putstr("Some parameters in cone missed=)\n"));
 	return (0);
@@ -109,9 +108,13 @@ int			val_cone(int fd, t_list **prim)
 	if (!(obj = (t_cone*)malloc(sizeof(t_cone))))
 		return (ft_putstr("Memory didn't allocated for cone!\n"));
 	if (read_line(fd, obj))
+	{
+		free(obj);
 		return (1);
+	}
 	temp = ft_lstnew(obj, sizeof(t_cone));
 	temp->content_size = CONE;
 	ft_lstadd(prim, temp);
+	free(obj);
 	return (0);
 }

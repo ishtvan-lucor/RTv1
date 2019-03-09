@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_loop_mlx.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 17:07:34 by ikoloshy          #+#    #+#             */
-/*   Updated: 2018/12/26 17:10:05 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/07 17:50:06 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

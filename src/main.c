@@ -6,11 +6,27 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 21:12:02 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/28 17:27:17 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/09 14:57:35 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rtv1.h"
+
+static void	error_free(t_list *prim, t_list *light)
+{
+	while (prim)
+	{
+		free(prim->content);
+		free(prim);
+		prim = prim->next;
+	}
+	while (light)
+	{
+		free(light->content);
+		free(light);
+		light = light->next;
+	}
+}
 
 static void	preperation_and_start(char *config)
 {
@@ -19,9 +35,15 @@ static void	preperation_and_start(char *config)
 	sv.prim = NULL;
 	sv.light = NULL;
 	if (validation_config(config, &sv))
+	{
+		error_free(sv.prim, sv.light);
 		return ;
+	}
 	if (analyze_light(sv.light) || analyze_prim(sv.prim))
-		return ;
+	{
+		error_free(sv.prim, sv.light);
+		return;
+	}
 	if (init_mlx(&sv))
 		return ;
 	render(&sv);

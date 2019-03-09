@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 19:58:34 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/03/05 15:42:07 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/09 13:42:15 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static int	find_objects(int fd, t_list **light, t_list **prim)
 		if (error)
 			return (1);
 	}
+	free(line);
 	return (0);
 }
 

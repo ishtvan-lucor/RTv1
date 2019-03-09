@@ -51,7 +51,7 @@ int	val_int_cord(char **s, int *trg, size_t len)
 	if (type == 1)
 		*trg = ft_atoi(s[1]);
 	else
-		return (ft_putstr("ERROR: int coordinate expected there1"));
+		return (ft_putstr("ERROR: int coordinate expected there!"));
 	return (0);
 }
 
