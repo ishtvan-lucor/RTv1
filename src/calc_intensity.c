@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:13:06 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/03/05 21:58:13 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/09 16:10:54 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static double	calc_effects(t_co *point, t_data_tr *d, void *light,
 	if (point->obj)
 		return (res);
 	res += diffuse(((t_alght*)(light))->intensity, &point->nrm, &d->direction);
-	if (point->spcl > 0)
+	if (point->spcl > 99)
 		res += shine(point, &d->direction, ((t_alght*)(light))->intensity);
 	return (res);
 }
