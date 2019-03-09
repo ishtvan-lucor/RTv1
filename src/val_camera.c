@@ -69,7 +69,7 @@ int			val_camera(int fd, t_vector *cmr, int *rot_x, int *rot_y)
 			if (!ft_strcmp(line, DELIMITR))
 				break ;
 			if ((res = get_rot(line, rot_x, rot_y)))
-				break;
+				break ;
 			free(line);
 		}
 		free(line);

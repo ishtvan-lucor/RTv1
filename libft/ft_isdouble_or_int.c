@@ -25,7 +25,7 @@ int	ft_isdouble_or_int(const char *str)
 	{
 		if (*str == '.')
 		{
-			if (*(str+1) == '\0')
+			if (*(str + 1) == '\0')
 				return (0);
 			dot++;
 		}

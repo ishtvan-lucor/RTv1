@@ -15,9 +15,6 @@
 
 # include "usable_structs.h"
 
-# define REFLECTIVE 0
-# define SPECULAR 10
-
 typedef enum	e_obj
 {
 	SPHERE,
@@ -95,5 +92,5 @@ typedef struct	s_cone
 	t_vector	start;
 	t_vector	axis;
 }				t_cone;
-#endif
 
+#endif

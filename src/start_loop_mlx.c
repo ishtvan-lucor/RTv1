@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 17:07:34 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/03/07 17:50:06 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/09 16:40:38 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static int	catch_esc(int key, t_basic *storage)
 	return (0);
 }
 
-static int	exit_x(t_basic *s) {
+static int	exit_x(t_basic *s)
+{
 	mlx_destroy_image(s->mlx, s->p_to_img);
 	mlx_destroy_window(s->mlx, s->win);
 	exit(0);

@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 21:12:02 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/03/09 14:57:35 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/09 16:44:42 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	error_free(t_list *prim, t_list *light)
 	}
 }
 
-static void	preperation_and_start(char *config)
+static void	preparation_and_start(char *config)
 {
 	t_basic sv;
 
@@ -42,7 +42,7 @@ static void	preperation_and_start(char *config)
 	if (analyze_light(sv.light) || analyze_prim(sv.prim))
 	{
 		error_free(sv.prim, sv.light);
-		return;
+		return ;
 	}
 	if (init_mlx(&sv))
 		return ;
@@ -55,7 +55,7 @@ int			main(int argc, char **argv)
 	if (argc == 1)
 		ft_putstr("ERROR: no configuration file! Usage: ./RTv1 config_file");
 	else if (argc == 2)
-		preperation_and_start(argv[1]);
+		preparation_and_start(argv[1]);
 	else
 		ft_putstr("ERROR: too mach arguments! Usage: ./RTv1 config_file");
 	return (0);

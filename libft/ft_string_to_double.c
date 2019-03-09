@@ -28,7 +28,7 @@ static double	get_fractional_part(const char *str)
 	return (fp * 0.1);
 }
 
-double		ft_string_to_double(const char *str)
+double			ft_string_to_double(const char *str)
 {
 	double	res;
 	int		flag;

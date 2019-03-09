@@ -20,7 +20,7 @@ t_hs	sphere_intersection(t_vector *o, t_vector *d, const void *obj)
 
 	hits.t1 = INFINITY_RAY_DIST;
 	hits.t2 = INFINITY_RAY_DIST;
-	oc  = v_minus(o, &((t_sphere*)(obj))->cntr);
+	oc = v_minus(o, &((t_sphere*)(obj))->cntr);
 	val.a = v_dot_prd(d, d);
 	val.b = 2 * v_dot_prd(&oc, d);
 	val.c = v_dot_prd(&oc, &oc) - pow(((t_sphere*)(obj))->rds, 2);

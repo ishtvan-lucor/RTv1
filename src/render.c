@@ -44,7 +44,7 @@ static t_vector	rotation_y(t_vector *vec, double angle)
 	return (res);
 }
 
-static void	set_direction_cmr(int x, int y, t_data_tr *dtr, t_basic *s)
+static void		set_direction_cmr(int x, int y, t_data_tr *dtr, t_basic *s)
 {
 	t_vector	direction;
 

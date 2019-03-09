@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikoloshy <ikoloshy@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:27:31 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/10 17:04:20 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/09 16:56:23 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ typedef struct		s_tail
 	char			tail[BUFF_SIZE];
 }					t_tail;
 
-typedef struct	s_vector
+typedef struct		s_vector
 {
-	double		x;
-	double		y;
-	double		z;
-}				t_vector;
+	double			x;
+	double			y;
+	double			z;
+}					t_vector;
 
 void				ft_bzero(void *s, size_t n);
 void				ft_free_after_split(char **str, size_t len);
@@ -79,7 +79,7 @@ char				*ft_strncat(char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strnew(size_t size);
 char				*ft_strnstr(const char *haystack, const char *needle,
-		size_t len);
+					size_t len);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);

@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 17:51:27 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/03/03 21:36:39 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/09 16:42:43 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,13 @@
 # include <fcntl.h>
 # include "objects.h"
 
-
-#include <stdio.h>
-
-
 # define WIN_W 1200
 # define WIN_H 1200
 # define INFINITY_RAY_DIST 1000000000.0
 # define START_OF_VIEWPORT 1.0
 # define START_NEAR_SURFACE 0.00000001
 # define BACKGROUND_COLOR 0x000000
-# define DEPTH 0
+# define DEPTH 10
 
 /*
 ** FOV - (field of view) angle of view from camera
@@ -44,14 +40,11 @@ typedef struct	s_basic
 	int			*img;
 	int			rot_x;
 	int			rot_y;
-	t_is		spec; // never used)
+	t_is		spec;
 	t_vector	cmr;
 	t_list		*prim;
 	t_list		*light;
 }				t_basic;
-
-// delete bellow function
-void	show_obj_coord(t_basic *all);
 
 void			start_loop_mlx(t_basic *storage);
 void			render(t_basic *s);

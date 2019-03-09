@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 19:58:34 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/03/09 13:42:15 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/09 13:43:01 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,3 @@ int			validation_config(char *config, t_basic *sv)
 		return (ft_putstr("ERROR: fail close!\n"));
 	return (0);
 }
-// todo check on empty line

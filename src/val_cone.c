@@ -6,7 +6,7 @@
 /*   By: ikoloshy <ikoloshy@unit.student.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 19:45:17 by ikoloshy          #+#    #+#             */
-/*   Updated: 2019/02/21 19:49:56 by ikoloshy         ###   ########.fr       */
+/*   Updated: 2019/03/09 15:06:13 by ikoloshy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static int	read_line(int fd, t_cone *s)
 int			val_cone(int fd, t_list **prim)
 {
 	t_cone	*obj;
-	t_list		*temp;
+	t_list	*temp;
 
 	if (!(obj = (t_cone*)malloc(sizeof(t_cone))))
 		return (ft_putstr("Memory didn't allocated for cone!\n"));
