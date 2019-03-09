@@ -35,7 +35,7 @@ SRC = src/main.c \
 	  src/calc_intensity.c \
 	  src/reflection_ray.c \
 
-HDR = includes/RTv1.h
+HDR = includes/rtv1.h
 OFL = $(SRC:.c=.o)
 LIB = libft/libft.a
 MLX = -lmlx -I minilibx_macos -L minilibx_macos
@@ -51,7 +51,7 @@ $(NAME): $(LIB) $(OFL)
 	@echo "\033[1;32mRTv1 is ready to work\033[0m"
 
 %.o: %.c $(HDR) $(LIB)
-	@gcc -c $< -o $@ $(FLG) 
+	@gcc -c $< -o $@ $(FLG)
 $(LIB):
 	@make -C ./libft
 
