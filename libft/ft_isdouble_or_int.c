@@ -17,6 +17,8 @@ int	ft_isdouble_or_int(const char *str)
 	int dot;
 
 	dot = 1;
+	if (*str == '.')
+		return (0);
 	if (*str == '-' || *str == '+')
 		str++;
 	while (*str)
