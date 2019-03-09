@@ -1,0 +1,78 @@
+camera 0 0 -40
++
+sphere
+center 5 5 5
+radius 1
+color 0xf141f4
+reflective 0.0
+specular 500
++
+sphere
+center -5 5 5
+radius 1
+color 0x8c5fc6
+reflective 0.0
+specular 500
++
+sphere
+center -5 -5 5
+radius 1
+color 0x5fc68f
+reflective 0.0
+specular 500
++
+sphere
+center 5 -5 5
+radius 1
+color 0xe8db2e
+reflective 0.0
+specular 500
++
+plane
+color 0xff0000
+reflective 1.0
+specular -1
+point 0 0 -100
+normal 0 0 1
++
+plane
+color 0xff0000
+reflective 1.0
+specular -1
+point 0 0 10
+normal 0 0 1
++
+plane
+color 0xff00ff
+reflective 1.0
+specular -1
+point -10 0 0
+normal 1 0 0
++
+plane
+color 0xff00ff
+reflective 1.0
+specular -1
+point 10 0 0
+normal 1 0 0
++
+plane
+color 0xffffff
+reflective 1.0
+specular -1
+point 0 10 0
+normal 0 1 0
++
+plane
+color 0xffffff
+reflective 1.0
+specular -1
+point 0 -10 0
+normal 0 1 0
++
+spot
+intensity 0.9
+position 0 0 0
++
+ambient
+intensity 0.1

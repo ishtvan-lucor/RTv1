@@ -1,4 +1,4 @@
-camera 0 0 0
+camera 0 0 -10
 +
 sphere
 center 0 -1 3

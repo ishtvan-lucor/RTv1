@@ -46,7 +46,7 @@ center 5 -5 10
 +
 cylinder
 color 0xffffff
-specular 250
+specular 0
 reflective 0.0
 radius 1
 axis 0 1 0
@@ -54,7 +54,7 @@ point -5 0 10
 +
 sphere
 color 0xffffff
-specular 250
+specular 0
 reflective 0.0
 radius 2
 center -5 5 10
@@ -68,7 +68,7 @@ center -5 -5 10
 +
 cylinder
 color 0xffffff
-specular 250
+specular 1000
 reflective 0.0
 radius 1
 axis 0 1 0
@@ -91,7 +91,7 @@ center 4 -5 -6
 cylinder
 color 0xffffff
 specular 250
-reflective 0.8
+reflective 1.0
 radius 1
 axis 0 1 0
 point -4 0 -6

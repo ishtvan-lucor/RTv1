@@ -1,0 +1,14 @@
+camera 0 0 -20
+rotationX 0
++
+cone
+color 0x00ffff
+reflective 0.0
+specular 250
+angle 20
+axis 0 1 0
+point 0 0 0
++
+spot
+intensity 0.9
+position 0 -5 -30
