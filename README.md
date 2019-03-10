@@ -10,7 +10,7 @@ Directory /maps supported some test maps.
 
 #### Usage:
 + make
-+ ./fdf scenes/configurate_file
++ ./RTv1 scenes/configurate_file
 
 #### Exemple:
 ![Sphere](https://github.com/ishtvan-lucor/RTv1/blob/master/img/sphere.png?raw=true "Sphere + plane")
